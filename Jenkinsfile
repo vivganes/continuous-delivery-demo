@@ -1,3 +1,4 @@
+#!groovy
 node {
    def mvnHome
    stage('Preparation') { // for display purposes
@@ -11,12 +12,19 @@ node {
    stage('Build') {
       // Run the maven build
       if (isUnix()) {
-         sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean verify package"
+         sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean test"
       } else {
-         bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean verify package/)
+         bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean test/)
       }
+      junit '**/target/surefire-reports/TEST-*.xml'
    }
-   stage('Results') {
+   stage('Test') {
+      // Run the maven build
+      if (isUnix()) {
+         sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean verify package -Pintegration-tests"
+      } else {
+         bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean verify package -Pintegration-tests/)
+      }
       junit '**/target/failsafe-reports/TEST-*.xml'
       archive 'target/*.jar'
    }
