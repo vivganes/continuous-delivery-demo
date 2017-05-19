@@ -30,12 +30,12 @@ node {
       archive 'target/*.war'
    }
    stage('Staging'){
-         bat(/copy target\/*.war C:\Users\Vivek\source-codes\tomcat\webapps\staging.war/)
+         bat(/copy target\tasklist.war C:\Users\Vivek\source-codes\tomcat\webapps\staging.war/)
    }
    stage('Human Input'){
          input 'Does staging look good?'
    }
    stage('Deploy'){
-         bat(/copy target\/*.war C:\Users\Vivek\source-codes\tomcat\webapps\tasklist.war/)
+         bat(/copy target\tasklist.war C:\Users\Vivek\source-codes\tomcat\webapps\tasklist.war/)
    }
 }
