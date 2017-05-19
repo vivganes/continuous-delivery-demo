@@ -26,7 +26,7 @@ node {
          bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean verify package -Pintegration-tests/)
       }
       junit '**/target/failsafe-reports/TEST-*.xml'
-      step([$class: 'CucumberReportPublisher', fileExcludePattern: '', fileIncludePattern: '*.json', ignoreFailedTests: false, jenkinsBasePath: '', jsonReportDirectory: 'target/cucumber/', missingFails: false, parallelTesting: false, pendingFails: false, skippedFails: false, undefinedFails: false])
+      step([$class: 'CucumberReportPublisher', fileExcludePattern: '', fileIncludePattern: 'cucumber.json', ignoreFailedTests: false, jenkinsBasePath: '', jsonReportDirectory: 'target/', missingFails: false, parallelTesting: false, pendingFails: false, skippedFails: false, undefinedFails: false])
       archive 'target/*.jar'
    }
 }
