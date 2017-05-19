@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
  */
 
 @RunWith(Cucumber.class)
-@Cucumber.Options(format = {"pretty", "html:target/cucumber","json:target/cukes/report.json", "junit:target/cukes/junit.xml"})
+@Cucumber.Options(format = {"pretty", "html:target/cucumber","json:target/cucumber/report.json"})
 @Category(Acceptance.class)
 public class AcceptanceTest {
 }
