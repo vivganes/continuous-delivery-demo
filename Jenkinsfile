@@ -27,6 +27,15 @@ node {
       }
       junit '**/target/failsafe-reports/TEST-*.xml'
       step([$class: 'CucumberReportPublisher', fileExcludePattern: '', fileIncludePattern: 'cucumber.json', ignoreFailedTests: false, jenkinsBasePath: '', jsonReportDirectory: 'target/', missingFails: false, parallelTesting: false, pendingFails: false, skippedFails: false, undefinedFails: false])
-      archive 'target/*.jar'
+      archive 'target/*.war'
+   }
+   stage('Staging'){
+         bat(/copy target\/*.war C:\Users\Vivek\source-codes\tomcat\webapps\staging.war/)
+   }
+   stage('Human Input'){
+         input 'Does staging look good?'
+   }
+   stage('Deploy'){
+         bat(/copy target\/*.war C:\Users\Vivek\source-codes\tomcat\webapps\tasklist.war/)
    }
 }
