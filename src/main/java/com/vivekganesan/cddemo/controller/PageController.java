@@ -12,6 +12,6 @@ public class PageController {
 
     @RequestMapping(path="/", method= RequestMethod.GET)
     public String serveHomePage(){
-        return "Welcome to tasklist";
+        return "<h2 class='header'>Welcome to tasklist</h2>";
     }
 }
