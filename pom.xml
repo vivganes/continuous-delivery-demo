@@ -140,7 +140,7 @@
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>2.19.1</version>
                 <configuration>
-                    <argLine>-Dwebdriver.chrome.driver=c:\Users\Vivek\source-codes\chromedriver.exe </argLine>
+                    <argLine>-Dwebdriver.chrome.driver=c:\chromedriver.exe </argLine>
                 </configuration>
                 <executions>
                     <execution>
