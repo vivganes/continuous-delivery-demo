@@ -1,0 +1,1 @@
+copy target\tasklist.war C:\Users\Vivek\source-codes\tomcat-prod\webapps\tasklist.war
