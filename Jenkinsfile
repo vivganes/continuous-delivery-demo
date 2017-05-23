@@ -29,7 +29,7 @@ node {
       step([$class: 'CucumberReportPublisher', fileExcludePattern: '', fileIncludePattern: 'cucumber.json', ignoreFailedTests: false, jenkinsBasePath: '', jsonReportDirectory: 'target/', missingFails: false, parallelTesting: false, pendingFails: false, skippedFails: false, undefinedFails: false])
    }
    stage('Staging'){
-         bat(/copy target\tasklist.war C:\Users\Vivek\source-codes\tomcat-staging\webapps\tasklist.war/)
+         bat 'scripts/deploy-stage.bat'
    }
    stage('Human Verification'){
          input 'Does staging environment look good?'
