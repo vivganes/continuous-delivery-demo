@@ -1,10 +1,13 @@
 package com.vivekganesan.cddemo.integration;
 
 import com.jayway.restassured.RestAssured;
+import com.vivekganesan.cddemo.featuretoggles.AppFeatures;
 import com.vivekganesan.cddemo.testCategories.Integration;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
+import org.togglz.junit.TogglzRule;
 
 import static org.hamcrest.Matchers.containsString;
 
@@ -13,6 +16,10 @@ import static org.hamcrest.Matchers.containsString;
  */
 @Category(Integration.class)
 public class TaskListIT {
+
+    @Rule
+    public TogglzRule togglzRule = TogglzRule.allEnabled(AppFeatures.class);
+
     @Before
     public void setup(){
         RestAssured.port = 8090;
@@ -25,6 +32,8 @@ public class TaskListIT {
 
     @Test
     public void testHomePageWelcomeText(){
+        togglzRule.disable(AppFeatures.WELCOME_MESSAGE);
+
         RestAssured.get("/").then().assertThat().body(containsString("Welcome to tasklist"));
     }
 

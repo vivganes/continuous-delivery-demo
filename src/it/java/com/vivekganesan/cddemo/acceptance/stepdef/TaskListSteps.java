@@ -1,15 +1,18 @@
 package com.vivekganesan.cddemo.acceptance.stepdef;
 
+import com.vivekganesan.cddemo.featuretoggles.AppFeatures;
 import cucumber.annotation.After;
 import cucumber.annotation.Before;
 import cucumber.annotation.en.Given;
 import cucumber.annotation.en.Then;
 import cucumber.annotation.en.When;
 import cucumber.runtime.PendingException;
+import org.junit.Rule;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.togglz.junit.TogglzRule;
 
 import java.util.concurrent.TimeUnit;
 
@@ -22,6 +25,9 @@ import static org.junit.Assert.assertTrue;
 public class TaskListSteps {
 
     private WebDriver driver;
+
+    @Rule
+    public TogglzRule togglzRule = TogglzRule.allEnabled(AppFeatures.class);
 
     @Before
     public void beforeScenario(){
@@ -39,6 +45,7 @@ public class TaskListSteps {
     @Given("^there are no tasks$")
     public void thereAreNoTasks() throws Throwable {
         //TODO: Remove tasks using DB Script here
+        togglzRule.disable(AppFeatures.WELCOME_MESSAGE);
     }
 
     @When("^i open the task list page$")
