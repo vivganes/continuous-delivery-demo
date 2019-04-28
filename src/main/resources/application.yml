@@ -1,0 +1,7 @@
+togglz.console.enabled: true
+
+  togglz:
+    feature-enums: com.vivekganesan.cddemo.featuretoggles.AppFeatures
+    console:
+      path: /togglz
+      secured: false
