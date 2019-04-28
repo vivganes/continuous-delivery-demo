@@ -7,6 +7,8 @@ import org.togglz.core.Feature;
 import org.togglz.core.manager.TogglzConfig;
 import org.togglz.core.repository.StateRepository;
 import org.togglz.core.repository.file.FileBasedStateRepository;
+import org.togglz.core.user.FeatureUser;
+import org.togglz.core.user.SimpleFeatureUser;
 import org.togglz.core.user.UserProvider;
 import org.togglz.servlet.user.ServletUserProvider;
 
@@ -24,6 +26,12 @@ public class FeatureToggleConfig implements TogglzConfig {
     }
 
     public UserProvider getUserProvider() {
-        return new ServletUserProvider("admin");
+        return new UserProvider() {
+            @Override
+
+            public FeatureUser getCurrentUser() {
+                return new SimpleFeatureUser("admin", true);
+            }
+        };
     }
 }
