@@ -45,6 +45,7 @@ public class TaskListSteps {
     @Given("^there are no tasks$")
     public void thereAreNoTasks() throws Throwable {
         //TODO: Remove tasks using DB Script here
+        togglzRule = TogglzRule.allEnabled(AppFeatures.class);
         togglzRule.disable(AppFeatures.WELCOME_MESSAGE);
     }
 
