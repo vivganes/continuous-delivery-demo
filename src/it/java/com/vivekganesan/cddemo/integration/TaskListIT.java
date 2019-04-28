@@ -27,15 +27,11 @@ public class TaskListIT {
 
     @Test
     public void testBootup(){
-        togglzRule = TogglzRule.allEnabled(AppFeatures.class);
         RestAssured.get("/").then().assertThat().statusCode(200);
     }
 
     @Test
     public void testHomePageWelcomeText(){
-        togglzRule = TogglzRule.allEnabled(AppFeatures.class);
-        togglzRule.disable(AppFeatures.WELCOME_MESSAGE);
-
         RestAssured.get("/").then().assertThat().body(containsString("Welcome to tasklist"));
     }
 
