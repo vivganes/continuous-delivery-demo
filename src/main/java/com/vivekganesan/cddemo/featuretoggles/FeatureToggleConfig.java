@@ -25,6 +25,7 @@ public class FeatureToggleConfig implements TogglzConfig {
         return new FileBasedStateRepository(new File("/tmp/features.properties"));
     }
 
+    @Override
     public UserProvider getUserProvider() {
         return new UserProvider() {
             @Override
