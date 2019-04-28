@@ -4,3 +4,4 @@ togglz:
     console:
       path: /togglz
       secured: false
+server.port: 8090
