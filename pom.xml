@@ -162,7 +162,7 @@
                 <version>3.1.0</version>
                 <configuration>
 
-                    <webappDirectory>/sample/servlet/container/deploy/directory</webappDirectory>
+                    <webappDirectory>deploy</webappDirectory>
                 </configuration>
             </plugin>
             <plugin>
