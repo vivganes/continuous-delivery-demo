@@ -32,8 +32,6 @@ public class TaskListIT {
 
     @Test
     public void testHomePageWelcomeText(){
-        togglzRule.disable(AppFeatures.WELCOME_MESSAGE);
-
         RestAssured.get("/").then().assertThat().body(containsString("Welcome to tasklist"));
     }
 

@@ -45,7 +45,7 @@ public class TaskListSteps {
     @Given("^there are no tasks$")
     public void thereAreNoTasks() throws Throwable {
         //TODO: Remove tasks using DB Script here
-        togglzRule.disable(AppFeatures.WELCOME_MESSAGE);
+
     }
 
     @When("^i open the task list page$")
